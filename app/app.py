@@ -1,5 +1,23 @@
-print("Welcome to Track Career Analyzer")
-print("This app will grow throughout the Python bootcamp.")
+def show_welcome():
+    print("Welcome to Track Career Analyzer")
+    print("This app will grow throughout the Python bootcamp.")
+
+
+def calculate_best_result(results):
+    return min(results)
+
+
+def compare_to_goal(current_pr, goal_mark):
+    difference = current_pr - goal_mark
+
+    if current_pr < goal_mark:
+        print("Goal reached!")
+    elif current_pr == goal_mark:
+        print("Exactly at the goal!")
+    else:
+        print("Still chasing the goal.")
+
+    print(f"Difference: {difference} seconds")
 
 
 def get_number(prompt):
@@ -10,67 +28,57 @@ def get_number(prompt):
             print("Please enter a valid number.")
 
 
-athlete_name = input("Athlete name: ")
-graduation_year = int(get_number("Graduation year: "))
-primary_event = input("Primary event: ")
-current_pr = get_number("Current PR (seconds): ")
-goal_mark = get_number("Goal mark (seconds): ")
+def get_athlete_profile():
+    athlete_name = input("Athlete name: ")
+    graduation_year = int(get_number("Graduation year: "))
+    primary_event = input("Primary event: ")
+    current_pr = get_number("Current PR (seconds): ")
+    goal_mark = get_number("Goal mark (seconds): ")
 
-print("\nAthlete Profile")
-print("---------------")
-print(f"Name: {athlete_name}")
-print(f"Graduation year: {graduation_year}")
-print(f"Primary event: {primary_event}")
-print(f"Current PR: {current_pr} seconds")
-print(f"Goal mark: {goal_mark} seconds")
+    return athlete_name, graduation_year, primary_event, current_pr, goal_mark
 
-if current_pr < goal_mark:
-    print("Goal reached!")
-elif current_pr == goal_mark:
-    print("Exactly at the goal!")
-else:
-    print("Still chasing the goal.")
 
-difference = current_pr - goal_mark
-print(f"Difference: {difference} seconds")
+def display_athlete_profile(athlete_name, graduation_year, primary_event, current_pr, goal_mark):
+    print()
+    print("Athlete Profile")
+    print("---------------")
+    print(f"Name: {athlete_name}")
+    print(f"Graduation year: {graduation_year}")
+    print(f"Primary event: {primary_event}")
+    print(f"Current PR: {current_pr}")
+    print(f"Goal mark: {goal_mark}")
 
-print("\nThanks for using Track Career Analyzer!")
 
-results = []
-first_result = float(input("First result: "))
-second_result = float(input("Second result: "))
-third_result = float(input("Third result: "))
+def collect_results():
+    results = []
 
-results.append(first_result)
-results.append(second_result)
-results.append(third_result)
+    for number in range(3):
+        result = float(input(f"Enter result #{number + 1}: "))
+        results.append(result)
 
-print("Meet Results")
-print("------------")
+    return results
 
-if not results:
-    print("No results entered yet.")
-else:
+
+def display_results(results):
+    print()
+    print("Results Summary")
+    print("---------------")
+
     for result in results:
         print(result)
 
-number_of_results = len(results)
-print(f"Number of results: {number_of_results}")
-
-if results:
-    best_result = min(results)
+    print(f"Number of results: {len(results)}")
+    best_result = calculate_best_result(results)
     print(f"Best result: {best_result}")
-else:
-    print("No results available for best result.")
-for number in range(3):
-    result = float(input(f"Enter result #{number + 1}: "))
-    results.append(result)
-print()
-print("Results Summary")
-print("---------------")
 
-for result in results:
-    print(result)
 
-print(f"Number of results: {len(results)}")
-print(f"Best result: {min(results)}")
+show_welcome()
+
+athlete_name, graduation_year, primary_event, current_pr, goal_mark = get_athlete_profile()
+display_athlete_profile(athlete_name, graduation_year, primary_event, current_pr, goal_mark)
+compare_to_goal(current_pr, goal_mark)
+
+print("\nThanks for using Track Career Analyzer!")
+
+results = collect_results()
+display_results(results)
