@@ -1,3 +1,29 @@
+import csv
+DATA_FILE = "data/Results.csv"
+
+def load_results():
+    results = []
+
+    with open(DATA_FILE, "r", newline="") as file:
+        reader = csv.DictReader(file)
+
+        for row in reader:
+            results.append(row)
+
+    return results
+
+def display_saved_results(results):
+    print()
+    print("Saved Results")
+    print("-------------")
+
+    if len(results) == 0:
+        print("No saved results yet.")
+    else:
+        for result in results:
+            print(f"{result['date']} | {result['event']} | {result['mark']} | {result['meet']}")
+ 
+
 def show_welcome():
     print("Welcome to Track Career Analyzer")
     print("This app will grow throughout the Python bootcamp.")
@@ -71,14 +97,44 @@ def display_results(results):
     best_result = calculate_best_result(results)
     print(f"Best result: {best_result}")
 
+def add_result():
+    date = input("Date (YYYY-MM-DD): ")
+    event = input("Event: ")
+    mark = input("Mark: ")
+    meet = input("Meet: ")
+    notes = input("Notes: ")
+
+    return {
+        "date": date,
+        "event": event,
+        "mark": mark,
+        "meet": meet,
+        "notes": notes,
+    }
+
+def save_result(result):
+    fieldnames = ["date", "event", "mark", "meet", "notes"]
+
+    with open(DATA_FILE, "a", newline="") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writerow(result)
 
 show_welcome()
 
-athlete_name, graduation_year, primary_event, current_pr, goal_mark = get_athlete_profile()
-display_athlete_profile(athlete_name, graduation_year, primary_event, current_pr, goal_mark)
-compare_to_goal(current_pr, goal_mark)
+#athlete_name, graduation_year, primary_event, current_pr, goal_mark = get_athlete_profile()
+#display_athlete_profile(athlete_name, graduation_year, primary_event, current_pr, goal_mark)
+#compare_to_goal(current_pr, goal_mark)
 
 print("\nThanks for using Track Career Analyzer!")
 
-results = collect_results()
-display_results(results)
+#results = collect_results()
+#display_results(results)
+
+saved_results = load_results()
+display_saved_results(saved_results)
+
+new_result = add_result()
+save_result(new_result)
+
+saved_results = load_results()
+display_saved_results(saved_results)
