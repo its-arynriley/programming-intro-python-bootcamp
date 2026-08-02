@@ -1,14 +1,23 @@
+from pathlib import Path
+
+import pandas as pd
 import csv
-DATA_FILE = "data/Results.csv"
+
+BASE_DIR = Path(__file__).resolve().parent
+DATA_FILE = BASE_DIR / "data" / "Results.csv"
 
 def load_results():
     results = []
 
-    with open(DATA_FILE, "r", newline="") as file:
+    if not DATA_FILE.exists():
+        return results
+
+    with open(DATA_FILE, "r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
 
         for row in reader:
-            results.append(row)
+            if row:
+                results.append(row)
 
     return results
 
@@ -115,9 +124,32 @@ def add_result():
 def save_result(result):
     fieldnames = ["date", "event", "mark", "meet", "notes"]
 
-    with open(DATA_FILE, "a", newline="") as file:
+    DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
+    file_exists = DATA_FILE.exists()
+
+    with open(DATA_FILE, "a", newline="", encoding="utf-8") as file:
         writer = csv.DictWriter(file, fieldnames=fieldnames)
+        if not file_exists:
+            writer.writeheader()
         writer.writerow(result)
+
+def load_results_dataframe():
+    return pd.read_csv(DATA_FILE, on_bad_lines="skip")
+
+def analyze_event(df, event_name):
+    event_results = df[df["event"] == event_name]
+
+    if len(event_results) == 0:
+        print("No results found for that event.")
+    else:
+        best_result = event_results["mark"].min()
+        average_result = event_results["mark"].mean()
+        number_of_results = len(event_results)
+
+        print(f"Best {event_name}: {best_result}")
+        print(f"Average {event_name}: {average_result}")
+        print(f"Number of {event_name} results: {number_of_results}")
+
 
 show_welcome()
 
@@ -133,8 +165,26 @@ print("\nThanks for using Track Career Analyzer!")
 saved_results = load_results()
 display_saved_results(saved_results)
 
-new_result = add_result()
-save_result(new_result)
+print("\nDataframe preview:")
+df = load_results_dataframe()
+print("Columns:", df.columns.tolist())
+print("Shape:", df.shape)
+print("Head:")
+print(df.head())
 
-saved_results = load_results()
-display_saved_results(saved_results)
+df["mark"] = pd.to_numeric(df["mark"])
+results_by_event = df["event"].value_counts()
+print(results_by_event)
+best_by_event = df.groupby("event")["mark"].min()
+print(best_by_event)
+average_by_event = df.groupby("event")["mark"].mean()
+print(average_by_event)
+sorted_results = df.sort_values("mark")
+print(sorted_results)
+event_name = input("Event to analyze: ")
+event_results = df[df["event"] == event_name]
+print(event_results)
+
+event_name = input("Event to analyze: ")
+analyze_event(df, event_name)
+
