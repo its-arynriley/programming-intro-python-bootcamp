@@ -4,42 +4,47 @@
 
 Phase: 04
 
-Branch:
+Branch: lists-loops-and-results
 
-Pull request:
 
 ## What I Built
 
-Write 2-4 sentences about the app features you added in phase 04, such as lists, loops, and result tracking.
+I built a more complete cersion of the app. It now collects athlete profile details, compares the current PR to a goal, and stores multiple meet results in a list. 
 
 ## What I Learned
 
-Write 2-4 sentences about what you learned about lists, loops, and working with multiple results.
+I learned how to make a loop using python code.
 
 ## Commands I Used
 
 ```bash
-
+cd app
+app.py
 ```
 
 ## Bugs Or Mistakes
 
-Describe any bugs or mistakes you ran into and how you fixed them.
+I put things in the wrong order and had to rearrange it. 
 
 ## AI Usage
 
 Did I use AI?
-
+Yes
 What did I ask?
-
+Where things should be put and ordered. 
 What did AI help me understand?
-
-What did I change myself?
-
+How to order code. 
 Can I explain every line of code in my PR?
-
+Yes
 ## Demo Notes
 
-What did I show?
-
-What live change did I make without AI?
+## What a list is
+A way to store multiple values in one variable. 
+## What append() does
+Adds one item to the end of a list. 
+## What a for loop does
+Repeats a block of code for each item in a list.
+## What range(3) means
+A sequence of numbers starting at 0 and ending at 3.
+## Why min() finds the best timed result
+It finds the smallest value in a list. 

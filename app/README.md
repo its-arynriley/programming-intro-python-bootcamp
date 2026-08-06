@@ -1,11 +1,38 @@
 # Track Career Analyzer App
 
-This folder contains Track Career Analyzer, the app built during the bootcamp.
+This folder contains Track Career Analyzer, a small Python project built during the bootcamp.
 
-The app starts as a terminal Python program and grows into a pandas-powered Streamlit app.
+## What the app does
+The app reads track result data from a CSV file and displays it so it is easier to review and analyze.
 
-> [!NOTE]
-> Early phases use only `app.py`. The Streamlit file is created later in Phase 08.
+## How to run the terminal app
+From the project root, run:
+
+```bash
+cd app
+python3 app.py
+```
+
+## How to run the Streamlit app
+From the project root, activate the virtual environment and start the browser app:
+
+```bash
+cd app
+source ../.venv/bin/activate
+streamlit run streamlit_app.py
+```
+
+## Where the data lives
+The app reads its main data file from:
+
+- [app/data/Results.csv](data/Results.csv)
+
+A sample file is also available here:
+
+- [app/data/sample_results.csv](data/sample_results.csv)
+
+## Current phase
+The app is currently in Phase 08, where it has moved from a terminal script to a Streamlit browser app.
 
 ## App Growth
 
