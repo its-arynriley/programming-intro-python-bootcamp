@@ -8,8 +8,6 @@ primary_event = input("Primary event: ")
 current_pr = float(input("Current PR (seconds): "))
 goal_mark = float(input("Goal mark (seconds): "))
 
-print("\nAthlete Profile")
-
 print()
 print("Athlete Profile")
 print("---------------")
@@ -30,4 +28,3 @@ difference = current_pr - goal_mark
 print(f"Difference: {difference} seconds")
 
 print("\nThanks for using Track Career Analyzer!")
-
