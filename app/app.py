@@ -1,5 +1,6 @@
 print("Welcome to Track Career Analyzer")
 print("This app will grow throughout the Python bootcamp.")
+print("Phase 01 is about running and editing Python code.")
 
 
 def get_number(prompt):
@@ -16,7 +17,8 @@ primary_event = input("Primary event: ")
 current_pr = get_number("Current PR (seconds): ")
 goal_mark = get_number("Goal mark (seconds): ")
 
-print("\nAthlete Profile")
+print()
+print("Athlete Profile")
 print("---------------")
 print(f"Name: {athlete_name}")
 print(f"Graduation year: {graduation_year}")
@@ -34,37 +36,12 @@ else:
 difference = current_pr - goal_mark
 print(f"Difference: {difference} seconds")
 
-print("\nThanks for using Track Career Analyzer!")
-
 results = []
-first_result = float(input("First result: "))
-second_result = float(input("Second result: "))
-third_result = float(input("Third result: "))
 
-results.append(first_result)
-results.append(second_result)
-results.append(third_result)
-
-print("Meet Results")
-print("------------")
-
-if not results:
-    print("No results entered yet.")
-else:
-    for result in results:
-        print(result)
-
-number_of_results = len(results)
-print(f"Number of results: {number_of_results}")
-
-if results:
-    best_result = min(results)
-    print(f"Best result: {best_result}")
-else:
-    print("No results available for best result.")
 for number in range(3):
-    result = float(input(f"Enter result #{number + 1}: "))
+    result = get_number(f"Enter result #{number + 1}: ")
     results.append(result)
+
 print()
 print("Results Summary")
 print("---------------")
@@ -74,3 +51,5 @@ for result in results:
 
 print(f"Number of results: {len(results)}")
 print(f"Best result: {min(results)}")
+
+print("\nThanks for using Track Career Analyzer!")
