@@ -1,23 +1,7 @@
 def show_welcome():
     print("Welcome to Track Career Analyzer")
     print("This app will grow throughout the Python bootcamp.")
-
-
-def calculate_best_result(results):
-    return min(results)
-
-
-def compare_to_goal(current_pr, goal_mark):
-    difference = current_pr - goal_mark
-
-    if current_pr < goal_mark:
-        print("Goal reached!")
-    elif current_pr == goal_mark:
-        print("Exactly at the goal!")
-    else:
-        print("Still chasing the goal.")
-
-    print(f"Difference: {difference} seconds")
+    print("Phase 01 is about running and editing Python code.")
 
 
 def get_number(prompt):
@@ -45,15 +29,32 @@ def display_athlete_profile(athlete_name, graduation_year, primary_event, curren
     print(f"Name: {athlete_name}")
     print(f"Graduation year: {graduation_year}")
     print(f"Primary event: {primary_event}")
-    print(f"Current PR: {current_pr}")
-    print(f"Goal mark: {goal_mark}")
+    print(f"Current PR: {current_pr} seconds")
+    print(f"Goal mark: {goal_mark} seconds")
+
+
+def compare_to_goal(current_pr, goal_mark):
+    difference = current_pr - goal_mark
+
+    if current_pr < goal_mark:
+        print("Goal reached!")
+    elif current_pr == goal_mark:
+        print("Exactly at the goal!")
+    else:
+        print("Still chasing the goal.")
+
+    print(f"Difference: {difference} seconds")
+
+
+def calculate_best_result(results):
+    return min(results)
 
 
 def collect_results():
     results = []
 
     for number in range(3):
-        result = float(input(f"Enter result #{number + 1}: "))
+        result = get_number(f"Enter result #{number + 1}: ")
         results.append(result)
 
     return results
@@ -68,8 +69,7 @@ def display_results(results):
         print(result)
 
     print(f"Number of results: {len(results)}")
-    best_result = calculate_best_result(results)
-    print(f"Best result: {best_result}")
+    print(f"Best result: {calculate_best_result(results)}")
 
 
 show_welcome()
@@ -78,7 +78,7 @@ athlete_name, graduation_year, primary_event, current_pr, goal_mark = get_athlet
 display_athlete_profile(athlete_name, graduation_year, primary_event, current_pr, goal_mark)
 compare_to_goal(current_pr, goal_mark)
 
-print("\nThanks for using Track Career Analyzer!")
-
 results = collect_results()
 display_results(results)
+
+print("\nThanks for using Track Career Analyzer!")
