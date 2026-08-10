@@ -17,3 +17,11 @@ It analyzes track results from a CSV file using pandas and Streamlit.
 
 This is a learning project, not a finished commercial app.
 
+Deployment status: Not deployed yet. The app can be run locally with Streamlit.
+
+Run instructions:
+
+```bash
+cd app
+streamlit run streamlit_app.py
+```

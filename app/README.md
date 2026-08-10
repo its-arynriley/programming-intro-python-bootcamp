@@ -2,7 +2,7 @@
 
 This folder contains Track Career Analyzer, the app built during the bootcamp.
 
-The app starts as a terminal Python program and grows into a pandas-powered Streamlit app.
+The app started as a terminal Python program and now includes a pandas-powered Streamlit browser app.
 
 > [!NOTE]
 > Early phases use only `app.py`. The Streamlit file is created later in Phase 08.
@@ -53,11 +53,17 @@ python3 -m streamlit run streamlit_app.py
 
 Sample data lives in `data/sample_results.csv`.
 
-The student's working data file is `data/results.csv` once Phase 06 is complete.
+The student's working data file is `data/results.csv`.
+
+Before sharing or deploying, check this file for private information and replace anything that should not be public.
 
 ## App Link
 
 Deployment status: Not deployed yet. The app can be run locally with Streamlit.
+
+## Sharing Status
+
+This app is ready for local sharing. Deployment can happen after the data file and repository are reviewed one more time for public readiness.
 
 ## Final Demo
 
