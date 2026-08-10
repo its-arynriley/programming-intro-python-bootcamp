@@ -66,3 +66,7 @@ Use the repository-level final demo checklist:
 ```text
 ../docs/final-demo-checklist.md
 ```
+
+## Bootcamp Status
+
+Core curriculum phases 00-10 are drafted.
