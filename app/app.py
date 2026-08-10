@@ -1,5 +1,6 @@
 print("Welcome to Track Career Analyzer")
 print("This app will grow throughout the Python bootcamp.")
+print("Phase 01 is about running and editing Python code.")
 
 athlete_name = input("Athlete name: ")
 graduation_year = int(input("Graduation year: "))
@@ -8,6 +9,9 @@ current_pr = float(input("Current PR (seconds): "))
 goal_mark = float(input("Goal mark (seconds): "))
 
 print("\nAthlete Profile")
+
+print()
+print("Athlete Profile")
 print("---------------")
 print(f"Name: {athlete_name}")
 print(f"Graduation year: {graduation_year}")
