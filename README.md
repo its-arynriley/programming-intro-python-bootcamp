@@ -153,6 +153,12 @@ Before publishing publicly:
 
 Deployment status: Not deployed yet. The app can be run locally with Streamlit.
 
+Streamlit entry point:
+
+```text
+app/streamlit_app.py
+```
+
 ## Bootcamp Status
 
 Core curriculum phases 00-10 are drafted.
